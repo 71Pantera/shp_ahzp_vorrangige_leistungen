@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dialog name="shp_ahzp_vorrangige_leistungen" generate-roadmap="true">
+  <options>
+    <option name="readyingSubforms">false</option>
+  </options>
+  <page name="vorrangige_leistungen" path="vorrangige_leistungen" id="vorrangige_leistungen" model-src="vorrangige_leistungen.858">
+    <title>Vorrangige Leistungen - Kriterien</title>
+    <roadmap-title>Kriterien</roadmap-title>
+    <intro><![CDATA[<h3>{getApplicantName()}</h3><br/><br/> <ul><li><a title="Lorum ipsum dolor sit amet" href="#nowhere">Lorem</a></li><li><a title="Aliquam tincidunt mauris eu risus" href="#nowhere">Aliquam</a></li><li><a title="Morbi in sem quis dui placerat ornare" href="#nowhere">Morbi</a></li><li><a title="Praesent dapibus, neque id cursus faucibus" href="#nowhere">Praesent</a></li><li><a title="Pellentesque fermentum dolor" href="#nowhere">Pellentesque</a></li></ul>]]></intro>
+    <resource id="case" range="SESSION" condition="myForm.transaction"/>
+    <infobox name="Info_falldocs">
+      <display-text><![CDATA[<ol><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Vestibulum auctor dapibus neque.</li></ol>]]></display-text>
+    </infobox>
+    <resource id="caseAll" range="SESSION" condition="myForm.transaction"/>
+    <field name="vorrangige_leistung_kriterien" id="vorrangige_leistung_kriterien" type="choice" required="true" read-only="false" repeated="true" sample-value="Kriterien" choice-multiple="true" control-style="combobox">
+      <label label-style="question">vorrangige_leistung_kriterien:</label>
+      <title>vorrangige_leistung_kriterien</title>
+      <option value="xixii">Vorrangige Leistungen nach SGB XI/XII liegen vor/werden vermutet</option>
+      <option value="v">Vorrangige Leistungen nach SGB V liegen vor/werden vermutet</option>
+      <option value="plegeb">Erheblicher Pflegebedarf von mindestens 6 Monaten und Pflegeumfang von mindestens 12,5 Punkten laut MDK-Gutachten liegen vor</option>
+      <option value="aerztvero">Ärztliche Verordnung für aktuellen Zeitraum liegt vor</option>
+      <option value="khentlber">Krankenhausentlassungsbericht mit Hinweis auf medizinische Behandlungspflege liegt vor</option>
+      <option value="rehagut">Reha-Gutachten liegt vor</option>
+      <option value="mkiapgut">MDK Gutachten und/oder IAP Gutachten mit Hinweis auf behandlungspflegerische Leistungen liegt vor</option>
+      <option value="entkhlei">Hilfesuchende/r wurde aus dem Krankenhaus entlassen und begehrt (höhere) Leistungen</option>
+    </field>
+  </page>
+  <flow condition="myForm.vorrangige_leistung_kriterien.xixii">
+    <page name="Vorrangige Leistung SGB XI" path="vorrangige_leistung_sgb_xi" id="vorrangige_leistung_sgb_xi" hub-scope="vorrangige_leistung_sgb_xi" model-src="Vorrangige Leistung SGB XI.887" type="hub" multiplicity="one_or_more">
+      <title>Vorrangige Leistungen nach dem SGB XI</title>
+      <roadmap-title>Vorrangige Leistungen -SGB XI</roadmap-title>
+      <intro><![CDATA[<h3>{getApplicantName()}</h3><br/><br/> <ul><li><a title="Lorum ipsum dolor sit amet" href="#nowhere">Lorem</a></li><li><a title="Aliquam tincidunt mauris eu risus" href="#nowhere">Aliquam</a></li><li><a title="Morbi in sem quis dui placerat ornare" href="#nowhere">Morbi</a></li><li><a title="Praesent dapibus, neque id cursus faucibus" href="#nowhere">Praesent</a></li><li><a title="Pellentesque fermentum dolor" href="#nowhere">Pellentesque</a></li></ul>]]></intro>
+      <summary>
+        <column expression="#'.'">Pos.</column>
+        <column expression="myForm.berechnetes_feld">Berechnetes Feld</column>
+      </summary>
+      <page name="Vorrangige Leistung SGB XI" path="vorrangige-leistung-sgb-xi" id="vorrangige_leistung_sgb_xi--vorrangige-leistung-sgb-xi" model-src="Vorrangige Leistung SGB XI.887">
+        <title>Vorrangige Leistungen nach dem SGB XI</title>
+        <roadmap-title>Vorrangige Leistungen - SGB XI</roadmap-title>
+        <field name="berechnetes_feld" id="vorrangige_leistung_sgb_xi.berechnetes_feld" type="computed" required="false" read-only="false">
+          <label label-style="prefix">Berechnetes Feld:</label>
+          <title>Berechnetes Feld</title>
+        </field>
+      </page>
+    </page>
+  </flow>
+</dialog>

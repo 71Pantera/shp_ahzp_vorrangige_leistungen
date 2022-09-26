@@ -11,4 +11,5 @@ function getApplicantName(){
     // if (surnam.length > 0){res = res + surnam};
     res = tit + " " + nam + " " + surnam; 
     return res;
+    
 }
